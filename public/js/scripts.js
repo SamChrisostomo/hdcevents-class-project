@@ -1,1 +1,3 @@
-console.log("Está funcionando!");
+$(document).ready(function(){
+    $('.dropdown-trigger').dropdown();
+});
