@@ -35,7 +35,7 @@ Route::get('/contato', function () {
     return view('contacts');
 });
 
-Route::get('/produtos/{id?}', function ($id = null) {
+Route::get('/produtos/{id}', function ($id) {
     
     $busca = request("search");
 
