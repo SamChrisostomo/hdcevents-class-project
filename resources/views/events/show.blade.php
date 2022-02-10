@@ -11,10 +11,7 @@
         <div class="col s12 l4" id="event-content-container">
             <ul>
                 <li>
-                    <h6>
-                        <i class="material-icons">title</i>
-                        {{$event->title}}
-                    </h6>
+                    <h3 style="margin-top: 0;">{{$event->title}}</h3>
                 </li>
                 <li>
                     <h6>
@@ -29,7 +26,13 @@
                     </h6>
                 </li>
                 <li>
-                    <a href="#" class="btn waves-effect grey darken-3">Participar</a>
+                    <h6>
+                        <i class="material-icons">star</i>
+                        Dono do evento
+                    </h6>
+                </li>
+                <li>
+                    <a href="#" class="btn waves-effect grey darken-3" style="margin-top: 15px;">Participar</a>
                 </li>
             </ul>
             <ul id="itens-container">
