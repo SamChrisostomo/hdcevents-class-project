@@ -28,7 +28,7 @@
                 <li>
                     <h6>
                         <i class="material-icons">star</i>
-                        Dono do evento
+                        {{$eventOwner['name']}}
                     </h6>
                 </li>
                 <li>
