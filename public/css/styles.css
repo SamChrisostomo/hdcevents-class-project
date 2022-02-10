@@ -1,4 +1,79 @@
+/* Geberal */
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+}
+/* Navbar */
 .brand-logo img{
     width: 60px;
     margin-left: 10px;
+}
+
+/* Search */
+#search-container{
+    background-image: url("../img/background-search-section.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+#search-container h1{
+    color: #fff;
+    text-align: center;
+}
+
+#search-container .search{
+    color: #fff;
+    margin-top: 30px;
+}
+
+/* Card Styles */
+#card-container .card-action a:hover{
+    background-color: #363636 !important;
+}
+
+/* Detalhes do eventos */
+#event-container{
+    margin-top: 5%;
+}
+
+#event-img-container img{
+    border-radius: 20px;
+}
+
+#event-content-container h6{
+    font-size: 18pt;
+    font-weight: 300;
+}
+
+#event-about-container h2{
+    font-size: 30pt;
+    font-weight: 600;
+}
+
+#event-about-container p{
+    font-size: 18pt;
+    font-weight: 400;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Lista de itens dos eventos */
+#itens-container{
+    margin-top: 30px;
+}
+
+#itens-container li{
+    float: left;
+}
+
+/* loguin-form */
+#loguin-container{
+    margin-top: 15%;
+}
+
+/* Create Events */
+#create-events-container{
+    margin-top: 10%;
 }

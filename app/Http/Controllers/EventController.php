@@ -3,27 +3,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
     public function index(){
-        $nome = "Samuel";
-        $idade = 23;
 
-        $arr = [10,20,30,40,50];
+        $search = request('search');
 
-        $nomes = ["Samuel", "Maria", "José", "Pedro"];
+        if($search){
+
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+            
+        }else {
+            $events = Event::all();   
+        }
 
         return view('welcome',
         [
-            'nome' => $nome,
-            'idade' => $idade, 
-            'profissao' => "Programador",
-            'arr' => $arr,
-            'nomes' => $nomes
+            'events'=>$events,
+            'search'=>$search
         ]);
     }
+    
     public function create(){
         return view('events.create');
+    }
+
+    public function store(Request $request){
+
+        $event = new Event;
+        $event->title = $request->title;
+        $event->date = $request->date;
+        $event->City = $request->city;
+        $event->description = $request->description;
+        $event->private = $request->private;
+        $event->item = $request->item;
+
+        //Validação do campo imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image; //captura do atributo image
+            $extension = $requestImage->extension(); //Captua da extensão do arquivo
+            // Criando o novo nome do arquivo, usando um hash em mds + a data e hora do momento do UpLoad + a extnsão do arquivo.
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $requestImage->move(public_path("img/events"), $imageName);
+
+            $event->image = $imageName;
+
+        }
+
+        $event->save();
+
+        return redirect("/")->with('msg', 'Evento criado com sucesso!');
+    }
+
+    public function show($id){
+        $event = Event::findorfail($id);
+        
+        return view("events.show", ["event"=>$event]);
     }
 }
